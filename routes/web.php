@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TodoListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [TodoListController::class, 'index']);
+Route::get('/getData', [TodoListController::class, 'getData']);
+Route::post('/addTodo', [TodoListController::class, 'store']);
+Route::put('/updateTodo/{todoList}', [TodoListController::class, 'update']);
+Route::delete('/deleteTodo/{todoList}', [TodoListController::class, 'destroy']);
